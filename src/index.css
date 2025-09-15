@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: 'Lato', sans-serif;
+  }
+  
+  body {
+    background-color: #0a0a0a;
+    background-image:
+      radial-gradient(1200px 800px at 50% -10%, rgba(59, 130, 246, 0.12), transparent 60%),
+      radial-gradient(800px 600px at 90% 10%, rgba(148, 163, 184, 0.08), transparent 60%),
+      radial-gradient(600px 400px at 10% 20%, rgba(59, 130, 246, 0.06), transparent 60%);
+    background-attachment: fixed, fixed, fixed;
+    background-repeat: no-repeat, no-repeat, no-repeat;
+  }
+}
+
+@layer components {
+  .bg-tech {
+    background-color: #0a0a0a;
+    background-image:
+      radial-gradient(1200px 800px at 50% -10%, rgba(59, 130, 246, 0.12), transparent 60%),
+      radial-gradient(800px 600px at 90% 10%, rgba(148, 163, 184, 0.08), transparent 60%),
+      radial-gradient(600px 400px at 10% 20%, rgba(59, 130, 246, 0.06), transparent 60%),
+      linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: auto, auto, auto, 40px 40px, 40px 40px;
+    background-position: center, center, center, -1px -1px, -1px -1px;
+    background-attachment: fixed, fixed, fixed, fixed, fixed;
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #e5e7eb 50%, #9ca3af 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .glass-effect {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .space-glow {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+  }
+}
