@@ -2,53 +2,55 @@ import React from 'react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
 const teamMembers = [
+  
+  // New members — ARKADIA 11 (all 11th Grade)
   {
-    name: 'Alexandru Popescu',
-    role: 'Team Lead & Project Manager',
-    grade: '12th Grade',
-    bio: 'Passionate about aerospace engineering and space exploration. Leads our team with vision and determination, ensuring all project milestones are met.',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Leadership', 'Project Management', 'Systems Design']
-  },
-  {
-    name: 'Maria Ionescu',
-    role: 'Lead Designer & Architect',
-    grade: '12th Grade',
-    bio: 'Creative mind behind our settlement designs. Specializes in sustainable architecture and human factors engineering for space environments.',
-    imageUrl: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Architecture', 'Design', 'Human Factors']
-  },
-  {
-    name: 'Andrei Dumitrescu',
-    role: 'Lead Engineer & Technical Lead',
+    name: 'Lungu Răzvan Tudor',
+    role: 'Team Member — ARKADIA 11',
     grade: '11th Grade',
-    bio: 'Technical expert responsible for life support systems and structural engineering. Ensures our designs are both innovative and feasible.',
-    imageUrl: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Engineering', 'Life Support', 'Structural Design']
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
   },
   {
-    name: 'Elena Radu',
-    role: 'Research Coordinator',
-    grade: '12th Grade',
-    bio: 'Manages our research initiatives and ensures scientific accuracy. Coordinates with external experts and maintains our knowledge base.',
-    imageUrl: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Research', 'Data Analysis', 'Documentation']
-  },
-  {
-    name: 'Cristian Moldovan',
-    role: 'Technology Specialist',
+    name: 'Radu Vlad Alexandru',
+    role: 'Team Member — ARKADIA 11',
     grade: '11th Grade',
-    bio: 'Handles all technical aspects of our presentations and digital tools. Creates stunning visualizations and interactive models.',
-    imageUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Technology', 'Visualization', 'Digital Tools']
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
   },
   {
-    name: 'Ana Popa',
-    role: 'Communications Lead',
-    grade: '12th Grade',
-    bio: 'Manages our outreach and communication efforts. Ensures our project is presented clearly to judges and the public.',
-    imageUrl: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80',
-    specialties: ['Communication', 'Outreach', 'Presentation']
+    name: 'Șerban Lara Isabela',
+    role: 'Team Member — ARKADIA 11',
+    grade: '11th Grade',
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
+  },
+  {
+    name: 'Turcan Eric Octavian',
+    role: 'Team Member — ARKADIA 11',
+    grade: '11th Grade',
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
+  },
+  {
+    name: 'Blana Matei',
+    role: 'Team Member — ARKADIA 11',
+    grade: '11th Grade',
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
+  },
+  {
+    name: 'Armin',
+    role: 'Team Member — ARKADIA 11',
+    grade: '11th Grade',
+    bio: 'Participant in the ARKADIA 11 project.',
+    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
+    specialties: ['ARKADIA 11']
   }
 ];
 
@@ -124,7 +126,7 @@ const Team: React.FC = () => {
         {/* Team Stats */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="glass-effect p-6 rounded-xl">
-            <div className="text-3xl font-bold text-space-blue mb-2">6</div>
+            <div className="text-3xl font-bold text-space-blue mb-2">12</div>
             <div className="text-gray-300">Team Members</div>
           </div>
           <div className="glass-effect p-6 rounded-xl">

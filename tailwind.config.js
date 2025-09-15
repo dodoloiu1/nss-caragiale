@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'lato': ['Lato', 'sans-serif'],
+        'lato': ['Roboto', 'sans-serif'],
       },
       colors: {
         'space-dark': '#0a0a0a',

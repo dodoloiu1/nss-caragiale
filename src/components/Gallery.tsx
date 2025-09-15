@@ -1,44 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
 
-const images = [
-  {
-    src: '/img1.jpg',
-    alt: 'Space Settlement Design Concept',
-    title: 'Nova Station Alpha - Exterior View',
-    description: 'Our flagship space settlement featuring a rotating torus design for artificial gravity.'
-  },
-  {
-    src: '/img2.jpg',
-    alt: 'Lunar Base Architecture',
-    title: 'Lunar Gateway Hub - Habitat Module',
-    description: 'Underground lunar habitat designed for long-term human habitation.'
-  },
-  {
-    src: '/img3.jpg',
-    alt: 'Mars Colony Infrastructure',
-    title: 'Mars Colony Initiative - Dome Complex',
-    description: 'Pressurized dome habitats on the Martian surface with advanced life support systems.'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1446776877081-d282a0f896e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2072&q=80',
-    alt: 'Space Station Interior',
-    title: 'Living Quarters Design',
-    description: 'Interior view of residential modules with Earth-like environments.'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1614728894747-a83421e2b9c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
-    alt: 'Space Agriculture',
-    title: 'Hydroponic Farming Systems',
-    description: 'Advanced agricultural systems for sustainable food production in space.'
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1614728263952-84ea256f9679?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
-    alt: 'Space Transportation',
-    title: 'Inter-Settlement Transport',
-    description: 'Transportation systems connecting different settlement modules.'
-  }
-];
+// Dynamically import all images from the project-level `pics/` folder
+// Supports common image formats and returns URLs for use in <img src>
+const importedImages = import.meta.glob('../../pics/*.{png,jpg,jpeg,webp,gif}', {
+  eager: true,
+  as: 'url'
+}) as Record<string, string>;
+
+const humanizeFileName = (path: string): string => {
+  const fileName = path.split('/').pop() || '';
+  const base = fileName.replace(/\.[^.]+$/, '');
+  return base
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (c) => c.toUpperCase());
+};
+
+const images = Object.entries(importedImages)
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([path, url]) => ({
+    src: url,
+    alt: humanizeFileName(path),
+    title: humanizeFileName(path),
+    description: ''
+  }));
 
 const Gallery: React.FC = () => {
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
@@ -86,11 +71,10 @@ const Gallery: React.FC = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl sm:text-5xl font-bold text-gradient mb-6">
-            Project Gallery
+            Teams Gallery
           </h2>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            Explore our space settlement designs through detailed visualizations, 
-            architectural renderings, and concept art that brings our vision to life.
+            Explore our team's gallery through the pictures taken during the NSS conference in <strong>Orlando, Florida, USA</strong> in <strong>June 2025</strong>.
           </p>
         </div>
 
