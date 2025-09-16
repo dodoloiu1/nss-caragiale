@@ -1,61 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import useIntersectionObserver from '../hooks/useIntersectionObserver';
-
-const teamMembers = [
-  
-  // New members — ARKADIA 11 (all 11th Grade)
-  {
-    name: 'Lungu Răzvan Tudor',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  },
-  {
-    name: 'Radu Vlad Alexandru',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  },
-  {
-    name: 'Șerban Lara Isabela',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  },
-  {
-    name: 'Turcan Eric Octavian',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  },
-  {
-    name: 'Blana Matei',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  },
-  {
-    name: 'Armin',
-    role: 'Team Member — ARKADIA 11',
-    grade: '11th Grade',
-    bio: 'Participant in the ARKADIA 11 project.',
-    imageUrl: 'https://via.placeholder.com/256x256?text=ARKADIA',
-    specialties: ['ARKADIA 11']
-  }
-];
+import { useTeams } from './TeamsContext';
 
 const Team: React.FC = () => {
   const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
+  const { teams } = useTeams();
 
   return (
     <section
@@ -78,52 +28,29 @@ const Team: React.FC = () => {
           </p>
         </div>
 
-        {/* Team Grid */}
+        {/* Teams Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
-            <div
-              key={index}
-              className={`glass-effect p-6 rounded-2xl text-center transition-all duration-500 hover:transform hover:scale-105 hover:space-glow ${
+          {teams.map((team, index) => (
+            <Link
+              key={team.id}
+              to={`/teams/${team.id}`}
+              className={`block glass-effect rounded-2xl overflow-hidden transition-all duration-500 hover:transform hover:scale-105 hover:space-glow ${
                 isIntersecting ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
               }`}
               style={{ transitionDelay: `${index * 100}ms` }}
             >
-              {/* Profile Image */}
-              <div className="relative mb-6">
-                <img 
-                  src={member.imageUrl} 
-                  alt={member.name} 
-                  className="w-32 h-32 rounded-full mx-auto border-4 border-space-blue object-cover"
-                />
-                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-space-blue text-white px-3 py-1 rounded-full text-sm font-semibold">
-                  {member.grade}
-                </div>
+              <div className="h-40 bg-black/30">
+                <img src={team.imageUrl} alt={team.name} className="w-full h-40 object-cover" />
               </div>
-
-              {/* Member Info */}
-              <h3 className="text-2xl font-bold text-white mb-2">{member.name}</h3>
-              <p className="text-space-blue text-lg font-semibold mb-4">{member.role}</p>
-              <p className="text-gray-300 text-sm leading-relaxed mb-6">{member.bio}</p>
-
-              {/* Specialties */}
-              <div className="space-y-2">
-                <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide">Specialties</h4>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  {member.specialties.map((specialty, specIndex) => (
-                    <span
-                      key={specIndex}
-                      className="px-3 py-1 bg-space-blue bg-opacity-20 text-space-blue text-xs rounded-full border border-space-blue border-opacity-30"
-                    >
-                      {specialty}
-                    </span>
-                  ))}
-                </div>
+              <div className="p-6">
+                <h3 className="text-2xl font-bold text-white mb-2">{team.name}</h3>
+                <p className="text-gray-300 text-sm leading-relaxed">{team.description}</p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
-        {/* Team Stats */}
+        {/* Stats (optional) */}
         <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div className="glass-effect p-6 rounded-xl">
             <div className="text-3xl font-bold text-space-blue mb-2">12</div>

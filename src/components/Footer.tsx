@@ -1,6 +1,8 @@
 import React from 'react';
 
-const Footer: React.FC = () => {
+type Props = { onSecretTripleClick?: () => void };
+
+const Footer: React.FC<Props> = ({ onSecretTripleClick }) => {
   const currentYear = new Date().getFullYear();
 
   const quickLinks = [
@@ -147,9 +149,25 @@ const Footer: React.FC = () => {
         {/* Bottom Bar */}
         <div className="border-t border-white border-opacity-10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="text-gray-400 text-sm">
+            <button
+              type="button"
+              className="text-gray-400 text-sm hover:text-white transition-colors"
+              onClick={(() => {
+                let clicks = 0;
+                let timer: number | undefined;
+                return () => {
+                  clicks += 1;
+                  if (timer) window.clearTimeout(timer);
+                  timer = window.setTimeout(() => { clicks = 0; }, 800);
+                  if (clicks >= 3) {
+                    clicks = 0;
+                    if (onSecretTripleClick) onSecretTripleClick();
+                  }
+                };
+              })()}
+            >
               © {currentYear} CNILC NSS Team. All Rights Reserved.
-            </div>
+            </button>
             
             <div className="flex items-center space-x-6 text-sm">
               <span className="text-gray-400">Built with ❤️ for space exploration</span>
